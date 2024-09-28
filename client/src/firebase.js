@@ -6,11 +6,11 @@ import { initializeApp } from "firebase/app";
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: "albaniahomes-b2f3d.firebaseapp.com",
-  projectId: "albaniahomes-b2f3d",
-  storageBucket: "albaniahomes-b2f3d.appspot.com",
-  messagingSenderId: "990225025555",
-  appId: "1:990225025555:web:8213934b167daf8b950de6"
+  authDomain: "albanihomes.firebaseapp.com",
+  projectId: "albanihomes",
+  storageBucket: "albanihomes.appspot.com",
+  messagingSenderId: "1024601777622",
+  appId: "1:1024601777622:web:9bf2feee6eee53f2a6b077"
 };
 
 // Initialize Firebase
