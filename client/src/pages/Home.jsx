@@ -139,7 +139,7 @@ export default function Home() {
           <p className='mb-2 text-blue-900 font-semibold w-72'>
           With over two decades of experience, our dedicated team of professionals and local partners provide comprehensive services, including buying, renting, property management, finance, and legal advice. We pride ourselves on delivering honest, reliable support throughout the entire property transaction process. Our deep market knowledge and long-standing relationships with developers, architects, and legal advisors ensure that we provide the best solutions for our clients needs.
           </p>
-          <img src={berat} alt="tirana" className='rounded-lg'/>
+          <img src={berat} alt="tirana" className='rounded-lg w-[50%] sm:w-80'/>
         </div>    
     </div>
     <div className='py-20 px-4 max-w-6xl mx-auto'>
