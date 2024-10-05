@@ -11,7 +11,7 @@ import CreateListing from './pages/CreateListing';
 import UpdateListing from './pages/UpdateListing';
 import Listing from './pages/Listing';
 import Search from './pages/Search';
-import Futter from './pages/Futter';
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -32,7 +32,7 @@ export default function App() {
           />
         </Route>
       </Routes>
-      <Futter/>
+      
     </BrowserRouter>
   );
 };
