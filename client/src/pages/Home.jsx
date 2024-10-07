@@ -51,7 +51,7 @@ export default function Home() {
         console.log(error);
       }
     };
-    
+
     const fetchSaleListings = async () => {
       try {
         const res = await fetch('/api/listing/get?type=sale&limit=4');
@@ -202,8 +202,8 @@ export default function Home() {
                 <article className='bg-blue-950 px-9 py-5 rounded-xl text-center border-2 border-blue-950 transition hover:bg-transparent hover:border-primary-variant mx-auto'>
                     <ImWhatsapp className='text-[1.5rem] mb-2 mx-auto text-white'/>
                     <h4 className='text-white font-semibold'>WhatsApp</h4>
-                    <h5 className='text-white'>+355683302209</h5>
-                    <a href="https://api.whatsapp.com/send?phone=355683302209&text=Hi AlbaniaHomes! " target="_blank" className='mt-3 inline-block text-[0.8rem] font-bold text-blue-500'>Send Message</a>
+                    <h5 className='text-white'>+447786921525</h5>
+                    <a href="https://api.whatsapp.com/send?phone=447786921525&text=Hi AlbaniaHomes! " target="_blank" className='mt-3 inline-block text-[0.8rem] font-bold text-blue-500'>Send Message</a>
                 </article>
             </div>
             <form ref={form} onSubmit={sendEmail} className='flex flex-col gap-5 w-[50%] '>
