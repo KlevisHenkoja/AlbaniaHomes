@@ -195,8 +195,8 @@ export default function Home() {
                 <article className='bg-blue-950 p-5 rounded-xl text-center border-2 border-blue-950 mx-auto transition hover:bg-transparent hover:border-primary-variant'>
                     <HiOutlineMail className='text-[1.5rem] mb-2 mx-auto text-white'/>
                     <h4 className='font-semibold text-white'>Email</h4>
-                    <h5 className='text-white'>klevishn@gmail.com</h5>
-                    <a href="mailto:klevishn@gmail.com" target="_blank" className='mt-3 inline-block text-[0.8rem] text-blue-400 font-semibold'>Send Email</a>
+                    <h5 className='text-white'>saminuridinaj@hotmail.com</h5>
+                    <a href="mailto:saminuridinaj@hotmail.com" target="_blank" className='mt-3 inline-block text-[0.8rem] text-blue-400 font-semibold'>Send Email</a>
                 </article>
                 
                 <article className='bg-blue-950 px-9 py-5 rounded-xl text-center border-2 border-blue-950 transition hover:bg-transparent hover:border-primary-variant mx-auto'>
