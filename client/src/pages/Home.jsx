@@ -11,7 +11,7 @@ import vlora from '../assets/vlora.jpg';
 import tirana2 from '../assets/tirana.jpg';
 import {HiOutlineMail} from 'react-icons/hi';
 import {ImWhatsapp} from 'react-icons/im';
-import {useRef} from 'react';
+import React , {useRef} from 'react';
 import emailjs from 'emailjs-com';
 
 export default function Home() {
@@ -20,7 +20,7 @@ export default function Home() {
     const sendEmail = (e) => {
       e.preventDefault();
   
-      emailjs.sendForm('service_y814xbr', 'template_dwr48ln', form.current, 'v9UM2vFmhNbgJlPLH');
+      emailjs.sendForm('service_z4z48m4', 'template_hmji9he', form.current, 'user_v9UM2vFmhNbgJlPLH');
   
       e.target.reset();
     };
@@ -195,8 +195,8 @@ export default function Home() {
                 <article className='bg-blue-950 p-5 rounded-xl text-center border-2 border-blue-950 mx-auto transition hover:bg-transparent hover:border-primary-variant'>
                     <HiOutlineMail className='text-[1.5rem] mb-2 mx-auto text-white'/>
                     <h4 className='font-semibold text-white'>Email</h4>
-                    <h5 className='text-white'>saminuridinaj@hotmail.com</h5>
-                    <a href="mailto:saminuridinaj@hotmail.com" target="_blank" className='mt-3 inline-block text-[0.8rem] text-blue-400 font-semibold'>Send Email</a>
+                    <h5 className='text-white'>info@albaniahomes.uk</h5>
+                    <a href="mailto:info@albaniahomes.uk" target="_blank" className='mt-3 inline-block text-[0.8rem] text-blue-400 font-semibold'>Send Email</a>
                 </article>
                 
                 <article className='bg-blue-950 px-9 py-5 rounded-xl text-center border-2 border-blue-950 transition hover:bg-transparent hover:border-primary-variant mx-auto'>
