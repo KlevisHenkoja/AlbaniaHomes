@@ -20,7 +20,7 @@ export default function Home() {
     const sendEmail = (e) => {
       e.preventDefault();
   
-      emailjs.sendForm('service_z4z48m4', 'template_hmji9he', form.current, 'user_v9UM2vFmhNbgJlPLH');
+      emailjs.sendForm('service_z4z48m4', 'template_hmji9he', form.current, 'v9UM2vFmhNbgJlPLH');
   
       e.target.reset();
     };
