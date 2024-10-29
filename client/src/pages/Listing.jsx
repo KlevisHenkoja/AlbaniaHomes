@@ -9,14 +9,14 @@ import {
   FaBath,
   FaBed,
   FaChair,
-  FaMapMarkedAlt,
   FaMapMarkerAlt,
   FaParking,
   FaShare,
+  FaTimes,
+  FaArrowLeft,
+  FaArrowRight,
 } from 'react-icons/fa';
 import Contact from '../components/Contact';
-
-// https://sabe.io/blog/javascript-format-numbers-commas#:~:text=The%20best%20way%20to%20format,format%20the%20number%20with%20commas.
 
 export default function Listing() {
   SwiperCore.use([Navigation]);
@@ -25,13 +25,31 @@ export default function Listing() {
   const [error, setError] = useState(false);
   const [copied, setCopied] = useState(false);
   const [contact, setContact] = useState(false);
-  const [zoomed, setZoomed] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false); // Shtoni një state për modal-in
+  const [currentImageIndex, setCurrentImageIndex] = useState(0); // Indeksi i imazhit aktual
   const params = useParams();
   const { currentUser } = useSelector((state) => state.user);
 
-const handleZoom = ()=> {
-  setZoomed(!zoomed);
-};
+  const handleImageClick = (index) => {
+    setCurrentImageIndex(index); // Vendos imazhin aktual në modal
+    setIsModalOpen(true); // Hap modal-in
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false); // Mbyll modal-in
+  };
+
+  const handlePrevious = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? listing.imageUrls.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleNext = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === listing.imageUrls.length - 1 ? 0 : prevIndex + 1
+    );
+  };
 
   useEffect(() => {
     const fetchListing = async () => {
@@ -55,8 +73,6 @@ const handleZoom = ()=> {
     fetchListing();
   }, [params.listingId]);
 
-  
-
   return (
     <main>
       {loading && <p className='text-center my-7 text-2xl'>Loading...</p>}
@@ -66,20 +82,50 @@ const handleZoom = ()=> {
       {listing && !loading && !error && (
         <div className='max-w-xl mx-auto my-3'>
           <Swiper navigation>
-            {listing.imageUrls.map((url) => (
-            <SwiperSlide key={url}>
-              <div className="relative max-w-xl  max-h-[600px]">
-                <img
-                src={url}
-                alt="listing"
-                onClick={handleZoom}
-                className={`mx-auto h-[500px] transition-transform duration-300 ${zoomed ? "scale-150 cursor-zoom-out" : "cursor-zoom-in"}`}/>
-              </div>
-            </SwiperSlide>))}
+            {listing.imageUrls.map((url, index) => (
+              <SwiperSlide key={url}>
+                <div className="relative max-w-xl max-h-[600px]">
+                  <img
+                    src={url}
+                    alt="listing"
+                    onClick={() => handleImageClick(index)} // Shto eventin për të hapur modal-in
+                    className="mx-auto h-[500px] cursor-pointer"
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
           </Swiper>
 
+          {/* Modal për imazhin e zmadhimit me navigim */}
+          {isModalOpen && (
+            <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
+              <button
+                onClick={closeModal}
+                className="absolute top-5 right-5 text-white text-3xl"
+              >
+                <FaTimes />
+              </button>
+              <button
+                onClick={handlePrevious}
+                className="absolute left-5 text-white text-3xl"
+              >
+                <FaArrowLeft />
+              </button>
+              <img
+                src={listing.imageUrls[currentImageIndex]}
+                alt="Zoomed listing"
+                className="max-w-full max-h-full"
+              />
+              <button
+                onClick={handleNext}
+                className="absolute right-5 text-white text-3xl"
+              >
+                <FaArrowRight />
+              </button>
+            </div>
+          )}
 
-
+          {/* Pjesa tjetër e kodit */}
           <div className='fixed top-[13%] right-[3%] z-10 border rounded-full w-12 h-12 flex justify-center items-center bg-slate-100 cursor-pointer'>
             <FaShare
               className='text-slate-500'
@@ -105,7 +151,7 @@ const handleZoom = ()=> {
                 : listing.regularPrice.toLocaleString('en-US')}
               {listing.type === 'rent' && ' / month'}
             </p>
-            <p className='flex items-center mt-6 gap-2 text-slate-600  text-sm'>
+            <p className='flex items-center mt-6 gap-2 text-slate-600 text-sm'>
               <FaMapMarkerAlt className='text-green-700' />
               {listing.address}
             </p>
