@@ -25,8 +25,13 @@ export default function Listing() {
   const [error, setError] = useState(false);
   const [copied, setCopied] = useState(false);
   const [contact, setContact] = useState(false);
+  const [zoomed, setZoomed] = useState(false)
   const params = useParams();
   const { currentUser } = useSelector((state) => state.user);
+
+const handleZoom = ()=> {
+  setZoomed(!zoomed);
+};
 
   useEffect(() => {
     const fetchListing = async () => {
@@ -50,6 +55,8 @@ export default function Listing() {
     fetchListing();
   }, [params.listingId]);
 
+  
+
   return (
     <main>
       {loading && <p className='text-center my-7 text-2xl'>Loading...</p>}
@@ -65,7 +72,8 @@ export default function Listing() {
                 <img
                 src={url}
                 alt="listing"
-                className="mx-auto h-[500px]"/>
+                onClick={handleZoom}
+                className={`mx-auto h-[500px] transition-transform duration-300 ${zoomed ? "scale-150 cursor-zoom-out" : "cursor-zoom-in"}`}/>
               </div>
             </SwiperSlide>))}
           </Swiper>
