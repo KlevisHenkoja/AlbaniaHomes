@@ -33,7 +33,7 @@ export default function Home() {
   useEffect(() => {
     const fetchOfferListings = async () => {
       try {
-        const res = await fetch('/api/listing/get?offer=true&limit=4');
+        const res = await fetch('/api/listing/get?offer=true&limit=11');
         const data = await res.json();
         setOfferListings(data);
         fetchRentListings();
@@ -43,7 +43,7 @@ export default function Home() {
     };
     const fetchRentListings = async () => {
       try {
-        const res = await fetch('/api/listing/get?type=rent&limit=4');
+        const res = await fetch('/api/listing/get?type=rent&limit=11');
         const data = await res.json();
         setRentListings(data);
         fetchSaleListings();
@@ -54,7 +54,7 @@ export default function Home() {
 
     const fetchSaleListings = async () => {
       try {
-        const res = await fetch('/api/listing/get?type=sale&limit=4');
+        const res = await fetch('/api/listing/get?type=sale&limit=11');
         const data = await res.json();
         setSaleListings(data);
       } catch (error) {
@@ -108,45 +108,76 @@ export default function Home() {
 
       <div className='max-w-6xl mx-auto p-3 flex flex-col gap-8 my-10'>
         {offerListings && offerListings.length > 0 && (
-          <div className=''>
+          <div>
             <div className='my-3'>
               <h2 className='text-2xl font-semibold text-slate-600'>Recent offers</h2>
               <Link className='text-sm text-blue-800 hover:underline' to={'/search?offer=true'}>Show more offers</Link>
             </div>
-            <div className='flex flex-wrap gap-4'>
+            <Swiper
+              navigation
+              spaceBetween={16}
+              slidesPerView={1}
+              breakpoints={{
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+              }}
+            >
               {offerListings.map((listing) => (
-                <ListingItem listing={listing} key={listing._id} />
+                <SwiperSlide key={listing._id}>
+                  <ListingItem listing={listing} />
+                </SwiperSlide>
               ))}
-            </div>
+            </Swiper>
           </div>
         )}
         {rentListings && rentListings.length > 0 && (
-          <div className=''>
+          <div>
             <div className='my-3'>
               <h2 className='text-2xl font-semibold text-slate-600'>Recent places for rent</h2>
               <Link className='text-sm text-blue-800 hover:underline' to={'/search?type=rent'}>Show more places for rent</Link>
             </div>
-            <div className='flex flex-wrap gap-4'>
+            <Swiper
+              navigation
+              spaceBetween={16}
+              slidesPerView={1}
+              breakpoints={{
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+              }}
+            >
               {rentListings.map((listing) => (
-                <ListingItem listing={listing} key={listing._id} />
+                <SwiperSlide key={listing._id}>
+                  <ListingItem listing={listing} />
+                </SwiperSlide>
               ))}
-            </div>
+            </Swiper>
           </div>
         )}
         {saleListings && saleListings.length > 0 && (
-          <div className=''>
+          <div>
             <div className='my-3'>
               <h2 className='text-2xl font-semibold text-slate-600'>Recent places for sale</h2>
               <Link className='text-sm text-blue-800 hover:underline' to={'/search?type=sale'}>Show more places for sale</Link>
             </div>
-            <div className='flex flex-wrap gap-4'>
+            <Swiper
+              navigation
+              spaceBetween={16}
+              slidesPerView={1}
+              breakpoints={{
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+              }}
+            >
               {saleListings.map((listing) => (
-                <ListingItem listing={listing} key={listing._id} />
+                <SwiperSlide key={listing._id}>
+                  <ListingItem listing={listing} />
+                </SwiperSlide>
               ))}
-            </div>
+            </Swiper>
           </div>
         )}
       </div>
+
       <div className='py-20 px-4 max-w-6xl mx-auto'>
         <h1 className='text-3xl font-bold mb-4 text-blue-950 text-center'>Our Expertise</h1>
         <div className='flex flex-col md:flex-row md:max-w-sm: gap-7 items-center justify-center'>
