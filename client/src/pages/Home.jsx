@@ -230,7 +230,7 @@ export default function Home() {
                 <button type='submit' className='bg-white text-blue-950 font-semibold  rounded-md p-3 mx-auto items-center mb-3'>Send Message</button>
             </form>
       </div>
-      <div className="justify-around flex gap-0 p-3 ">
+      <div className=" flex flex-col p-5 m-3 justify-between md:flex-row sm:flex-col ">
                 <article className='bg-blue-950 w-56 p-5 my-0 rounded-xl text-center border-2 border-blue-950 mx-auto transition hover:bg-transparent hover:border-primary-variant'>
                     <HiOutlineMail className='text-[1.5rem] mb-2 mx-auto text-white'/>
                     <h4 className='font-semibold text-white'>Email</h4>
