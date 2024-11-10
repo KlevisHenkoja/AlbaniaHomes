@@ -57,7 +57,7 @@ export default function Header() {
               About
             </li>
           </Link>
-          <Link to='/profile'>
+          <Link to='/profile' >
             {currentUser ? (
               <img
                 className='rounded-full h-7 w-7 object-cover'
@@ -65,7 +65,7 @@ export default function Header() {
                 alt='profile'
               />
             ) : (
-              <li className=' text-blue-950 hover:underline'> Sign in</li>
+              <li className=' text-blue-950 hover:underline hidden'> Sign in</li>
             )}
           </Link>
         </ul>
